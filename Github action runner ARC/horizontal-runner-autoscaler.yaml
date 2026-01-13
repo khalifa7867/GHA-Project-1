@@ -11,5 +11,5 @@ spec:
   metrics:
     - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
       repositoryNames:
-        - khalifa7867/aws_gcp_infra_provisioning-project
+        - khalifa7867/GHA-Project-1
   scaleDownDelaySecondsAfterScaleOut: 300
