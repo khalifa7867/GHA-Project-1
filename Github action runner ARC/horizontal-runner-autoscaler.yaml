@@ -4,6 +4,9 @@ metadata:
   name: github-runner-autoscaler
   namespace: actions-runner-system
 spec:
+  githubAPICredentialsFrom:
+    secretRef:
+      name: controller-manager
   scaleTargetRef:
     name: github-runner-deployment
   minReplicas: 0
