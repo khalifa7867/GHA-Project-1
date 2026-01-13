@@ -1,0 +1,36 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: github-runner-deployment
+  namespace: actions-runner-system
+spec:
+  replicas: 0
+  template:
+    metadata:
+      labels:
+        runner-size: medium
+        runners: self-hosted
+    spec:
+      repository: khalifa7867/GHA-Project-1
+      githubAPICredentialsFrom:
+        secretRef:
+          name: controller-manager
+      nodeSelector:
+        workload-type: github-actions
+      tolerations:
+        - key: github-actions
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+      resources:
+        limits:
+          cpu: "2"
+          memory: "4Gi"
+        requests:
+          cpu: "1"
+          memory: "2Gi"
+      dockerdWithinRunnerContainer: true
+ 
+
+
+        
