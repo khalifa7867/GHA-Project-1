@@ -6,7 +6,7 @@ metadata:
   labels:
     app: java-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: java-app
@@ -18,7 +18,7 @@ spec:
       serviceAccountName: java-app-sa  # Uses the service account with ECR permissions
       containers:
       - name: java-app
-        image: 689978033779.dkr.ecr.us-east-1.amazonaws.com/java-app:latest  # Update region if different
+        image: 689978033779.dkr.ecr.ap-south-1.amazonaws.com/github-action-runners/java-app:1.0.12  # Update region if different
         ports:
         - containerPort: 8080
           protocol: TCP
@@ -33,11 +33,11 @@ spec:
           httpGet:
             path: /
             port: 8080
-          initialDelaySeconds: 30
+          initialDelaySeconds: 90
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /
             port: 8080
-          initialDelaySeconds: 20
+          initialDelaySeconds: 75
           periodSeconds: 5
