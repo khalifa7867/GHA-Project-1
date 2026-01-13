@@ -6,12 +6,13 @@ metadata:
 spec:
   replicas: 0
   template:
-    metadata:
-      labels:
-        runner-size: medium
-        runners: self-hosted
     spec:
       repository: khalifa7867/GHA-Project-1
+      image: summerwind/actions-runner-dind:latest
+      serviceAccountName: github-runner-sa
+      labels:
+        - self-hosted
+        - medium
       githubAPICredentialsFrom:
         secretRef:
           name: controller-manager
@@ -24,11 +25,11 @@ spec:
           effect: NoSchedule
       resources:
         limits:
-          cpu: "2"
-          memory: "4Gi"
+          cpu: "1500m"
+          memory: "1200Mi"
         requests:
-          cpu: "1"
-          memory: "2Gi"
+          cpu: "500m"
+          memory: "1000Mi"
       dockerdWithinRunnerContainer: true
  
 

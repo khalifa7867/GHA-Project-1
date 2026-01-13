@@ -3,6 +3,10 @@ on:
   push:
     branches: [ "main" ]
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build_push_deploy:
     runs-on: [self-hosted, medium] #using self-hosted runner
